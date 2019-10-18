@@ -1,0 +1,39 @@
+######################### INPUT ANA 0-10V ########################################
+file ecat2el316x.template
+{
+pattern {PREFIX,              CH_ID,      SLAVE_IDX, PDO_IDX, EGU,  ESLO,                  EOFF}
+        {"ISrc-010:HVAC-HT",  "AmbHumR",  2,         0,       "mA", 0.003051850947599719,  "-30"}
+        {"ISrc-010:HVAC-ST",  "AmbTempR", 2,         1,       "V",  0.002136296,           "0"}
+        {"LEBT-010:BMD-Chop", "VolR",     3,         2,       "kV", 0.0003662221137119663, "0"}
+        {"LEBT-010:BMD-Chop", "CurR",     3,         3,       "mA", 0.0003051850947599719, "0"}
+}
+
+######################### OUTPUT ANA 0-10V ########################################
+file ecat2el41xx.template
+{
+pattern {PREFIX,              CH_ID,  SLAVE_IDX, PDO_IDX, EOFF, ESLO,                  DRVL, DRVH, PREC, EGU}
+       	{"LEBT-010:BMD-Chop", "VolS", 4,         2,       0,    0.0003662221137119663, 0,    10,   2,    "kV"}
+}
+
+############################ PT100 ################################################
+file "ecat2el3208.template"
+{
+pattern {PREFIX,                 CH_ID,   SLAVE_IDX, PDO_IDX, EGU, ESLO}
+        {"ISrc-010:ISS-Coil-01", "TempR", 8,         0,       C,   0.1}
+        {"ISrc-010:ISS-Coil-02", "TempR", 8,         1,       C,   0.1}
+        {"ISrc-010:ISS-Coil-03", "TempR", 8,         2,       C,   0.1}
+        {"ISrc-010:ISS-PlasCh",  "TempR", 8,         3,       C,   0.1}
+        {"ISrc-010:ISS-MatTr",   "TempR", 8,         4,       C,   0.1}
+}
+
+######################### SLAVES  #################################################
+file ecat2slave.template
+{
+pattern {PREFIX,                 DTYP,        MOD_ID,    SLAVE_IDX, DEVICENAME}
+        {"LEBT-010:Ctrl-ECATIO", "ES3208",    "ES32081", 1,         ""}
+        {"LEBT-010:Ctrl-ECATIO", "ES3164",    "ES31641", 2,         ""}
+        {"LEBT-010:Ctrl-ECATIO", "ES3164",    "ES31642", 3,         ""}
+        {"LEBT-010:Ctrl-ECATIO", "EL4104",    "EL4104",  4,         ""}
+        {"LEBT-010:Ctrl-ECATIO", "EL2124",    "EL2124",  5,         ""}
+        {"LEBT-010:Ctrl-ECATIO", "ES3208",    "ES32082", 8,         ""}
+}

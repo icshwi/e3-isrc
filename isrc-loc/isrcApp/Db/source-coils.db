@@ -1,0 +1,654 @@
+## Voltage
+
+record(ao, "ISrc-010:PwrC-CoilPS-01:VolS")
+{
+    field(DESC, "Set Voltage")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_voltage CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-01:VolR")
+{
+    field(DESC, "Measure Voltage")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto measure_voltage CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-01:VolRB")
+{
+    field(DESC, "Measure Voltage")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_voltage CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+## Current
+
+record(ao, "ISrc-010:PwrC-CoilPS-01:CurS")
+{
+    field(DESC, "Set Current")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_current CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-01:CurR")
+{
+    field(DESC, "Measure Current")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto measure_current CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(HIHI, "490")
+    field(HIGH, "400")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-01:CurRB")
+{
+    field(DESC, "Measure Current")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_current CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(LOPR, "0")
+}
+
+## Reset
+
+record(ao, "ISrc-010:PwrC-CoilPS-01:Rst")
+{
+    field(DESC, "Reset")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto reset CoilsPS-01")
+}
+
+## Power Supply
+
+record(bo, "ISrc-010:PwrC-CoilPS-01:PwrS")
+{
+    field(DESC, "Power supply command")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto power_cmd CoilsPS-01")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(bi, "ISrc-010:PwrC-CoilPS-01:PwrR")
+{
+    field(DESC, "Get power supply status")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_status CoilsPS-01")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+## Local/Remote
+
+record(mbbi, "ISrc-010:PwrC-CoilPS-01:LckR")
+{
+    field(DESC, "Get Local Remote Mode selection")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_loc_rem_mode CoilsPS-01")
+    field(ZRVL, "0")
+    field(ZRST, "LOC")
+    field(ONVL, "1")
+    field(ONST, "REM")
+    field(TWVL, "2")
+    field(TWST, "LLO")
+}
+
+record(bo, "ISrc-010:PwrC-CoilPS-01:LckS")
+{
+    field(DESC, "Local Remote Mode selection")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto loc_rem_mode CoilsPS-01")
+    field(ZNAM, "LLO")
+    field(ONAM, "LOC")
+}
+
+# Diagnostics
+
+record(bi, "ISrc-010:PwrC-CoilPS-01:Test")
+{
+    field(DESC, "Simple Test, should not fail")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto simple_test CoilsPS-01")
+    field(ZNAM, "PASS")
+    field(ONAM, "FAIL")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-01:OvpR")
+{
+    field(DESC, "Get Over Voltage Protection")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_ovp CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "33")
+    field(LOPR, "0")
+}
+
+record(ao, "ISrc-010:PwrC-CoilPS-01:OvpS")
+{
+    field(DESC, "Set Over Voltage Protection")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_ovp CoilsPS-01")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "33")
+    field(LOPR, "0")
+}
+
+record(bi, "ISrc-010:PwrC-CoilPS-01:OvpErrR")
+{
+    field(DESC, "Get OVP Error flag")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_ovp_error CoilsPS-01")
+}
+
+## Errors
+
+record(stringout, "ISrc-010:PwrC-CoilPS-01:ErrSystS")
+{
+    field(DESC, "Enable error system")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto enable_errors_syst CoilsPS-01")
+}
+
+record(longin, "ISrc-010:PwrC-CoilPS-01:NxtErrR")
+{
+    field(SCAN, "1 second")
+    field(DESC, "Get the next error")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_next_error CoilsPS-01")
+}
+
+record(aSub, "ISrc-010:PwrC-CoilPS-01:ErrR")
+{
+    field(SCAN, "1 second")
+    field(DESC, "Get error message")
+    field(PINI, "YES")
+    field(SNAM, "get_error_message")
+    field(INPA, "ISrc-010:PwrC-CoilPS-01:GetNextError")
+    field(FTA,  "LONG")
+    field(FTVA, "STRING")
+    field(INPA, "ISrc-010:PwrC-CoilPS-01:GetNextError")
+}
+
+record(stringout, "ISrc-010:PwrC-CoilPS-01:ErrClr")
+{
+    field(DESC, "Clear error message")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto clear_error CoilsPS-01")
+}
+## Voltage
+
+record(ao, "ISrc-010:PwrC-CoilPS-02:VolS")
+{
+    field(DESC, "Set Voltage")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_voltage CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-02:VolR")
+{
+    field(DESC, "Measure Voltage")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto measure_voltage CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-02:VolRB")
+{
+    field(DESC, "Measure Voltage")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_voltage CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+## Current
+
+record(ao, "ISrc-010:PwrC-CoilPS-02:CurS")
+{
+    field(DESC, "Set Current")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_current CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-02:CurR")
+{
+    field(DESC, "Measure Current")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto measure_current CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(HIHI, "490")
+    field(HIGH, "400")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-02:CurRB")
+{
+    field(DESC, "Measure Current")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_current CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(LOPR, "0")
+}
+
+## Reset
+
+record(ao, "ISrc-010:PwrC-CoilPS-02:Rst")
+{
+    field(DESC, "Reset")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto reset CoilsPS-02")
+}
+
+## Power Supply
+
+record(bo, "ISrc-010:PwrC-CoilPS-02:PwrS")
+{
+    field(DESC, "Power supply command")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto power_cmd CoilsPS-02")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(bi, "ISrc-010:PwrC-CoilPS-02:PwrR")
+{
+    field(DESC, "Get power supply status")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_status CoilsPS-02")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+## Local/Remote
+
+record(mbbi, "ISrc-010:PwrC-CoilPS-02:LckR")
+{
+    field(DESC, "Get Local Remote Mode selection")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_loc_rem_mode CoilsPS-02")
+    field(ZRVL, "0")
+    field(ZRST, "LOC")
+    field(ONVL, "1")
+    field(ONST, "REM")
+    field(TWVL, "2")
+    field(TWST, "LLO")
+}
+
+record(bo, "ISrc-010:PwrC-CoilPS-02:LckS")
+{
+    field(DESC, "Local Remote Mode selection")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto loc_rem_mode CoilsPS-02")
+    field(ZNAM, "LLO")
+    field(ONAM, "LOC")
+}
+
+# Diagnostics
+
+record(bi, "ISrc-010:PwrC-CoilPS-02:Test")
+{
+    field(DESC, "Simple Test, should not fail")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto simple_test CoilsPS-02")
+    field(ZNAM, "PASS")
+    field(ONAM, "FAIL")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-02:OvpR")
+{
+    field(DESC, "Get Over Voltage Protection")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_ovp CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "33")
+    field(LOPR, "0")
+}
+
+record(ao, "ISrc-010:PwrC-CoilPS-02:OvpS")
+{
+    field(DESC, "Set Over Voltage Protection")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_ovp CoilsPS-02")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "33")
+    field(LOPR, "0")
+}
+
+record(bi, "ISrc-010:PwrC-CoilPS-02:OvpErrR")
+{
+    field(DESC, "Get OVP Error flag")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_ovp_error CoilsPS-02")
+}
+
+## Errors
+
+record(stringout, "ISrc-010:PwrC-CoilPS-02:ErrSystS")
+{
+    field(DESC, "Enable error system")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto enable_errors_syst CoilsPS-02")
+}
+
+record(longin, "ISrc-010:PwrC-CoilPS-02:NxtErrR")
+{
+    field(SCAN, "1 second")
+    field(DESC, "Get the next error")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_next_error CoilsPS-02")
+}
+
+record(aSub, "ISrc-010:PwrC-CoilPS-02:ErrR")
+{
+    field(SCAN, "1 second")
+    field(DESC, "Get error message")
+    field(PINI, "YES")
+    field(SNAM, "get_error_message")
+    field(INPA, "ISrc-010:PwrC-CoilPS-02:GetNextError")
+    field(FTA,  "LONG")
+    field(FTVA, "STRING")
+    field(INPA, "ISrc-010:PwrC-CoilPS-02:GetNextError")
+}
+
+record(stringout, "ISrc-010:PwrC-CoilPS-02:ErrClr")
+{
+    field(DESC, "Clear error message")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto clear_error CoilsPS-02")
+}
+## Voltage
+
+record(ao, "ISrc-010:PwrC-CoilPS-03:VolS")
+{
+    field(DESC, "Set Voltage")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_voltage CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-03:VolR")
+{
+    field(DESC, "Measure Voltage")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto measure_voltage CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-03:VolRB")
+{
+    field(DESC, "Measure Voltage")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_voltage CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "10")
+    field(LOPR, "0")
+}
+
+## Current
+
+record(ao, "ISrc-010:PwrC-CoilPS-03:CurS")
+{
+    field(DESC, "Set Current")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_current CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-03:CurR")
+{
+    field(DESC, "Measure Current")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto measure_current CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(HIHI, "490")
+    field(HIGH, "400")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LOPR, "0")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-03:CurRB")
+{
+    field(DESC, "Measure Current")
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_current CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "A")
+    field(HOPR, "500")
+    field(LOPR, "0")
+}
+
+## Reset
+
+record(ao, "ISrc-010:PwrC-CoilPS-03:Rst")
+{
+    field(DESC, "Reset")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto reset CoilsPS-03")
+}
+
+## Power Supply
+
+record(bo, "ISrc-010:PwrC-CoilPS-03:PwrS")
+{
+    field(DESC, "Power supply command")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto power_cmd CoilsPS-03")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(bi, "ISrc-010:PwrC-CoilPS-03:PwrR")
+{
+    field(DESC, "Get power supply status")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_status CoilsPS-03")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+## Local/Remote
+
+record(mbbi, "ISrc-010:PwrC-CoilPS-03:LckR")
+{
+    field(DESC, "Get Local Remote Mode selection")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_loc_rem_mode CoilsPS-03")
+    field(ZRVL, "0")
+    field(ZRST, "LOC")
+    field(ONVL, "1")
+    field(ONST, "REM")
+    field(TWVL, "2")
+    field(TWST, "LLO")
+}
+
+record(bo, "ISrc-010:PwrC-CoilPS-03:LckS")
+{
+    field(DESC, "Local Remote Mode selection")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto loc_rem_mode CoilsPS-03")
+    field(ZNAM, "LLO")
+    field(ONAM, "LOC")
+}
+
+# Diagnostics
+
+record(bi, "ISrc-010:PwrC-CoilPS-03:Test")
+{
+    field(DESC, "Simple Test, should not fail")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto simple_test CoilsPS-03")
+    field(ZNAM, "PASS")
+    field(ONAM, "FAIL")
+}
+
+record(ai, "ISrc-010:PwrC-CoilPS-03:OvpR")
+{
+    field(DESC, "Get Over Voltage Protection")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_ovp CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "33")
+    field(LOPR, "0")
+}
+
+record(ao, "ISrc-010:PwrC-CoilPS-03:OvpS")
+{
+    field(DESC, "Set Over Voltage Protection")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto set_ovp CoilsPS-03")
+    field(PREC, "3")
+    field(LINR, "NO CONVERSION")
+    field(EGU,  "V")
+    field(HOPR, "33")
+    field(LOPR, "0")
+}
+
+record(bi, "ISrc-010:PwrC-CoilPS-03:OvpErrR")
+{
+    field(DESC, "Get OVP Error flag")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP,  "@tdkGen10500.proto get_ovp_error CoilsPS-03")
+}
+
+## Errors
+
+record(stringout, "ISrc-010:PwrC-CoilPS-03:ErrSystS")
+{
+    field(DESC, "Enable error system")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto enable_errors_syst CoilsPS-03")
+}
+
+record(longin, "ISrc-010:PwrC-CoilPS-03:NxtErrR")
+{
+    field(SCAN, "1 second")
+    field(DESC, "Get the next error")
+    field(DTYP, "stream")
+    field(INP,  "@tdkGen10500.proto get_next_error CoilsPS-03")
+}
+
+record(aSub, "ISrc-010:PwrC-CoilPS-03:ErrR")
+{
+    field(SCAN, "1 second")
+    field(DESC, "Get error message")
+    field(PINI, "YES")
+    field(SNAM, "get_error_message")
+    field(INPA, "ISrc-010:PwrC-CoilPS-03:GetNextError")
+    field(FTA,  "LONG")
+    field(FTVA, "STRING")
+    field(INPA, "ISrc-010:PwrC-CoilPS-03:GetNextError")
+}
+
+record(stringout, "ISrc-010:PwrC-CoilPS-03:ErrClr")
+{
+    field(DESC, "Clear error message")
+    field(DTYP, "stream")
+    field(OUT,  "@tdkGen10500.proto clear_error CoilsPS-03")
+}

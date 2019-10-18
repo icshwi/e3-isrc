@@ -1,0 +1,21 @@
+file tdkGen10500.template
+{
+    {
+        proto_file      = "tdkGen10500.proto",
+        secsub          = "ISrc-010",
+        disdevidx       = "PwrC-CoilPS-01",
+        connection_name = "CoilsPS-01"
+    }
+    {
+        proto_file      = "tdkGen10500.proto",
+        secsub          = "ISrc-010",
+        disdevidx       = "PwrC-CoilPS-02",
+        connection_name = "CoilsPS-02"
+    }
+    {
+        proto_file      = "tdkGen10500.proto",
+        secsub          = "ISrc-010",
+        disdevidx       = "PwrC-CoilPS-03",
+        connection_name = "CoilsPS-03"
+    }
+}

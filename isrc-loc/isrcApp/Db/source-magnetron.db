@@ -1,0 +1,214 @@
+record(bo, ISrc-010:ISS-Magtr:Rst) {
+    field(DESC, "Reset Faults")
+    field(DTYP, "Soft Channel")
+    field(HIGH, "1")
+    field(OUT, "ISrc-010:ISS-Magtr:Setup.B7 PP")
+    field(ZNAM, "PulseOFF")
+    field(ONAM, "PulseON")
+}
+
+### Write functions
+
+## Address 2
+record(mbboDirect, "ISrc-010:ISS-Magtr:Setup") {
+    field(DESC, "Configuration and control")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 2, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 0
+record(longout, "ISrc-010:ISS-Magtr:ForwdPwrS") {
+    field(DESC, "Set forward power")
+    field(EGU,  "W")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 0, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 1
+record(longout, "ISrc-010:ISS-Magtr:ReflPwrS") {
+    field(DESC, "Set reflected power")
+    field(EGU,  "W")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 1, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 3
+record(mbbo, "ISrc-010:ISS-Magtr:StartModeS") {
+    field(DESC, "Set starting mode")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 3, 0xFFFF, 1000)MODBUS_DATA")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(ZRST, "NORMAL")
+    field(ONST, "OVERSHOOT")
+    field(TWST, "RAMP")
+}
+
+## Address 4
+record(longout, "ISrc-010:ISS-Magtr:StartTimS") {
+    field(DESC, "Set starting time")
+    field(LOPR, "0")
+    field(HOPR, "255")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 4, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 5
+record(longout, "ISrc-010:ISS-Magtr:PulsLLvlS") {
+    field(DESC, "Set pulse low level")
+    field(EGU,  "W")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 5, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 6
+record(longout, "ISrc-010:ISS-Magtr:PulsHLvlS") {
+    field(DESC, "Set pulse high level")
+    field(EGU,  "W")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 6, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 7
+record(longout, "ISrc-010:ISS-Magtr:PulsFreqCalcS") {
+    field(DESC, "Write pulse frequency")
+    field(EGU,  "Hz")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 7, 0xFFFF, 1000)MODBUS_DATA")
+    field(OMSL, "closed_loop")
+    field(DOL, "ISrc-010:ISS-Magtr:PulsFreqCalc.VAL")
+    field(FLNK, "ISrc-010:ISS-Magtr:WidthPulsS")
+}
+
+record(calcout, "ISrc-010:ISS-Magtr:PulsFreqCalc") {
+    field(DESC, "Calc pulse frequency")
+    field(INPA, "ISrc-010:ISS-Magtr:PulsFreqS")
+    field(CALC, "A*10")
+    field(FLNK, "ISrc-010:ISS-Magtr:PulsFreqCalcS pp")
+}
+
+record(ao, "ISrc-010:ISS-Magtr:PulsFreqS") {
+    field(DESC, "Set pulse frequency")
+    field(EGU,  "Hz")
+    field(LOPR, "0.3")
+    field(HOPR, "2500")
+    field(PREC, "1")
+    field(FLNK, "ISrc-010:ISS-Magtr:PulsFreqCalc")
+}
+
+## Address 8
+record(longout, "ISrc-010:ISS-Magtr:DutyCyclCalcS") {
+    field(DESC, "Write duty cycle")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,  "@asynMask(sgmp20ked-modbus-write-word, 8, 0xFFFF, 1000)MODBUS_DATA")
+    field(OMSL, "closed_loop")
+    field(DOL, "ISrc-010:ISS-Magtr:DutyCyclCalc.VAL")
+}
+
+record(calcout, "ISrc-010:ISS-Magtr:DutyCyclCalc") {
+    field(DESC, "Calc duty cycle")
+    field(INPA, "ISrc-010:ISS-Magtr:WidthPulsS")
+    field(INPB, "ISrc-010:ISS-Magtr:PulsFreqS")
+    field(CALC, "(A*B)/1000")
+    field(FLNK, "ISrc-010:ISS-Magtr:DutyCyclCalcS")
+}
+
+record(ao, "ISrc-010:ISS-Magtr:WidthPulsS") {
+    field(DESC, "Set width pulse")
+    field(LOPR, "1")
+    field(HOPR, "100")
+    field(EGU,  "ms")
+    field(PREC,1)
+    field(FLNK, "ISrc-010:ISS-Magtr:DutyCyclCalc")
+}
+
+### Read functions
+
+## Address 100
+record(longin, "ISrc-010:ISS-Magtr:ForwdPwrRB") {
+    field(DESC, "Get forward power")
+    field(SCAN, "I/O Intr")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 0, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 101
+record(longin, "ISrc-010:ISS-Magtr:ReflPwrRB") {
+    field(DESC, "Get reflected power")
+    field(SCAN, "I/O Intr")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 1, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 102
+record(longin, "ISrc-010:ISS-Magtr:ForwdPwrR") {
+    field(DESC, "Measure forward power")
+    field(SCAN, "I/O Intr")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 2, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 103
+record(longin, "ISrc-010:ISS-Magtr:ReflPwrR") {
+    field(DESC, "Measure reflected power")
+    field(SCAN, "I/O Intr")
+    field(LOPR, "0")
+    field(HOPR, "2000")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 3, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 104
+record(mbbiDirect, "ISrc-010:ISS-Magtr:Fault1") {
+    field(DESC, "Faults")
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 4, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 105
+record(mbbiDirect, "ISrc-010:ISS-Magtr:Fault2") {
+    field(DESC, "Faults")
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 5, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 107
+record(mbbiDirect, "ISrc-010:ISS-Magtr:HeadFault") {
+    field(DESC, "Faults")
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 7, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 108
+record(mbbiDirect, "ISrc-010:ISS-Magtr:PSFault1") {
+    field(DESC, "Faults")
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 8, 0xFFFF, 1000)MODBUS_DATA")
+}
+
+## Address 109
+record(mbbiDirect, "ISrc-010:ISS-Magtr:PSFault2") {
+    field(DESC, "Faults")
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynUInt32Digital")
+    field(INP,  "@asynMask(sgmp20ked-modbus-read-word, 9, 0xFFFF, 1000)MODBUS_DATA")
+}

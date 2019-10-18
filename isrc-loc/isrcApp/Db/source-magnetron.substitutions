@@ -1,0 +1,9 @@
+file sairemgmp20ked.template
+{
+    {
+        secsub    = ISrc-010,
+        disdevidx = ISS-Magtr,
+        write     = sgmp20ked-modbus-write-word,
+        read      = sgmp20ked-modbus-read-word
+    }
+}

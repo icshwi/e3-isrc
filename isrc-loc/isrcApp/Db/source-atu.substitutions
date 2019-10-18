@@ -1,0 +1,9 @@
+file sairemai4s.template
+{
+    {
+        secsub    = ISrc-010,
+        disdevidx = ISS-ATU,
+        write     = sai4s-modbus-write-word,
+        read      = sai4s-modbus-read-word
+    }
+}
