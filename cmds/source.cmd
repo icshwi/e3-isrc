@@ -22,7 +22,8 @@ require tdkGen10500,1.0.1
 require iocStats,ae5d083
 
 #require source,2.2+
-require isrc_source,master
+#require isrc_source,master
+require isrc,2.2.0
 
 #epicsEnvSet("STREAM_PROTOCOL_PATH", "$(ps_fug_DB)")
 #epicsEnvSet("STREAM_PROTOCOL_PATH", "$(sairemgmp20ked_DB)")
